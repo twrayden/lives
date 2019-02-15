@@ -15,13 +15,13 @@ const lives = require('lives');
 const hello = {
   a: {
     b: {
-      c: 1
+      c: 'Hello'
     }
   }
 };
 
 if (lives(hello, 'a.b.c')) {
-  console.log(hello.a.b.c);
+  console.log(hello.a.b.c, 'World!');
 }
 
 ```
