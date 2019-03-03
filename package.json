@@ -1,7 +1,7 @@
 {
   "name": "lives",
   "version": "2.1.0",
-  "description": "",
+  "description": "A variable lives here",
   "main": "index.js",
   "scripts": {
     "test": "jest"
@@ -10,5 +10,29 @@
   "license": "MIT",
   "devDependencies": {
     "jest": "^24.1.0"
-  }
+  },
+  "keywords": [
+    "nested",
+    "object",
+    "variable",
+    "existence",
+    "find",
+    "value",
+    "key",
+    "check",
+    "test",
+    "vanilla",
+    "small",
+    "tiny",
+    "lightweight",
+    "get"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomasraydeniscool/lives.git"
+  },
+  "bugs": {
+    "url": "https://github.com/thomasraydeniscool/lives/issues"
+  },
+  "homepage": "https://github.com/thomasraydeniscool/lives"
 }
