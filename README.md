@@ -24,4 +24,10 @@ if (lives(hello, 'a.b.c')) {
   console.log(hello.a.b.c, 'World!');
 }
 
+/**
+ * OR
+ */
+
+console.log(lives.get(hello, 'a.b.c'), 'World!');
+
 ```
