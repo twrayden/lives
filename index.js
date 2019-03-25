@@ -1,8 +1,12 @@
 function lives(object, path) {
   const check = { ...object };
   try {
-    eval(`check.${path}`);
-    return true;
+    const value = eval(`check.${path}`);
+    if (value != null) {
+      return true;
+    } else {
+      return false;
+    }
   } catch (err) {
     return false;
   }
@@ -16,6 +20,5 @@ lives.get = function(object, path) {
     return undefined;
   }
 };
-
 
 module.exports = lives;
