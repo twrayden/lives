@@ -3,14 +3,13 @@
  * @param {function} attempt
  */
 function lives(attempt) {
+  let value;
   try {
-    if (attempt()) {
-      return true;
-    } else {
-      return false;
-    }
+    value = attempt();
   } catch (err) {
-    return false;
+    value = undefined;
+  } finally {
+    return value !== undefined;
   }
 }
 
