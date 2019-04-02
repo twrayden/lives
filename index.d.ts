@@ -1,7 +1,7 @@
-declare function lives(object: any, path: any): boolean;
+declare function lives(attempt: () => any): boolean;
 
 declare namespace lives {
-  function get(object: any, path: any): any;
+  function get(attempt: () => any): any;
 }
 
 export = lives;
