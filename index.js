@@ -1,8 +1,10 @@
-function lives(object, path) {
-  const check = { ...object };
+/**
+ * Lives
+ * @param {function} attempt
+ */
+function lives(attempt) {
   try {
-    const value = eval(`check.${path}`);
-    if (value != null) {
+    if (attempt()) {
       return true;
     } else {
       return false;
@@ -12,10 +14,14 @@ function lives(object, path) {
   }
 }
 
-lives.get = function(object, path) {
-  const check = { ...object };
+/**
+ * Lives.get
+ * @param {function} attempt
+ */
+lives.get = function(attempt) {
   try {
-    return eval(`check.${path}`);
+    const result = attempt();
+    return result;
   } catch (err) {
     return undefined;
   }
