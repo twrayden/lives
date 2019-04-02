@@ -9,7 +9,6 @@ npm i --save lives
 ### Usage
 
 ```javascript
-
 const lives = require('lives');
 
 const hello = {
@@ -20,7 +19,7 @@ const hello = {
   }
 };
 
-if (lives(hello, 'a.b.c')) {
+if (lives(() => hello.a.b.c)) {
   console.log(hello.a.b.c, 'World!');
 }
 
@@ -28,6 +27,5 @@ if (lives(hello, 'a.b.c')) {
  * OR
  */
 
-console.log(lives.get(hello, 'a.b.c'), 'World!');
-
+console.log(lives.get(() => hello.a.b.c), 'World!');
 ```
