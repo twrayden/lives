@@ -4,12 +4,14 @@
   "description": "A variable lives here",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "author": "Thomas Rayden",
   "license": "MIT",
   "devDependencies": {
-    "jest": "^24.1.0"
+    "coveralls": "3.0.3",
+    "jest": "24.7.1"
   },
   "keywords": [
     "nested",
