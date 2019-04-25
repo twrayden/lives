@@ -36,5 +36,8 @@
   "bugs": {
     "url": "https://github.com/thomasraydeniscool/lives/issues"
   },
-  "homepage": "https://github.com/thomasraydeniscool/lives"
+  "homepage": "https://github.com/thomasraydeniscool/lives",
+  "engines": {
+    "node": ">=6.4.0"
+  }
 }
