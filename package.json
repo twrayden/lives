@@ -3,6 +3,7 @@
   "version": "3.1.3",
   "description": "A variable lives here",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "jest",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
