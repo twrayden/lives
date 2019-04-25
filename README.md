@@ -1,5 +1,8 @@
 # lives
 
+[![Build Status](https://travis-ci.org/thomasraydeniscool/lives.svg?branch=master)](https://travis-ci.org/thomasraydeniscool/lives)
+[![Coverage Status](https://coveralls.io/repos/github/thomasraydeniscool/lives/badge.svg?branch=master)](https://coveralls.io/github/thomasraydeniscool/lives?branch=master)
+
 > A variable lives here
 
 ```
