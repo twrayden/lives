@@ -1,6 +1,6 @@
 {
   "name": "lives",
-  "version": "3.1.2",
+  "version": "3.1.3",
   "description": "A variable lives here",
   "main": "index.js",
   "scripts": {
