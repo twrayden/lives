@@ -31,7 +31,7 @@ const missing = {
 };
 
 if (lives(() => hello.a.b.c)) {
-  console.log(hello.a.b.c, 'World!');
+  console.log(hello.a.b.c, 'World!'); // Hello World!
 }
 
 ```
