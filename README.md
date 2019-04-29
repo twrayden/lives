@@ -10,9 +10,12 @@
 npm i --save lives
 ```
 
-### Usage
+## Usage
+
+### Lives(attempt)
 
 ```javascript
+
 const lives = require('lives');
 
 const hello = {
@@ -23,13 +26,54 @@ const hello = {
   }
 };
 
+const missing = {
+  a: null
+};
+
 if (lives(() => hello.a.b.c)) {
   console.log(hello.a.b.c, 'World!');
 }
 
-/**
- * OR
- */
+```
 
-console.log(lives.get(() => hello.a.b.c), 'World!');
+### Lives.not(attempt)
+
+```javascript
+
+if(lives.not(() => missing.a.b.c)) {
+  throw new Error('Variable is missing!');
+}
+
+```
+
+### Lives.get(attempt)
+
+```javascript
+
+console.log(lives.get(() => hello.a.b.c), 'World!'); // Hello World!
+
+lives.get(() => missing.a.b.c) // undefined
+
+```
+
+### Lives.or(attempt, fallback)
+
+```javascript
+
+console.log(lives.or(() => missing.a.b.c, 'Hello'), 'World!'); // Hello World!
+
+```
+
+### Lives.is(attempt, type)
+
+```javascript
+
+lives.is(() => hello.a.b.c, 'string'); // True
+
+lives.is(() => hello.a.b.c, 'boolean'); // False
+
+lives.is(() => missing.a.b.c, 'string'); // False
+
+lives.is(() => missing.a.b.c, 'undefined'); // True
+
 ```
