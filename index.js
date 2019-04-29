@@ -78,7 +78,7 @@ lives.or = function(attempt, fallback) {
 /**
  * Lives.is
  *
- * Returns true if value type matches or false if doesn't.
+ * Returns true if value type matches or false if it doesn't.
  *
  * @param {function} attempt
  * @param {string} type
