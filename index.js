@@ -18,6 +18,25 @@ function lives(attempt) {
 }
 
 /**
+ * Lives.not
+ *
+ * Returns true if value is missing or false if value exists.
+ *
+ * @param {function} attempt
+ * @returns {boolean}
+ */
+lives.not = function(attempt) {
+  let value;
+  try {
+    value = attempt();
+  } catch (err) {
+    value = undefined;
+  } finally {
+    return value === undefined;
+  }
+};
+
+/**
  * Lives.get
  *
  * Returns value or undefined if value is missing.
@@ -53,6 +72,26 @@ lives.or = function(attempt, fallback) {
     value = fallback;
   } finally {
     return value;
+  }
+};
+
+/**
+ * Lives.is
+ *
+ * Returns true if value type matches or false if doesn't.
+ *
+ * @param {function} attempt
+ * @param {string} type
+ * @returns {boolean}
+ */
+lives.is = function(attempt, type) {
+  let value;
+  try {
+    value = attempt();
+  } catch (err) {
+    value = undefined;
+  } finally {
+    return typeof value === type;
   }
 };
 
