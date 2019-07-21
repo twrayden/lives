@@ -1,5 +1,10 @@
 (function(isNode) {
   'use strict';
+  function ow(arg, type) {
+    if (typeof arg !== type) {
+      throw new TypeError('Expected argument of type ' + type);
+    }
+  }
   /**
    * Lives
    *
@@ -9,7 +14,8 @@
    * @returns {boolean}
    */
   function lives(attempt) {
-    let value;
+    ow(attempt, 'function');
+    var value;
     try {
       value = attempt();
     } catch (err) {
@@ -20,6 +26,28 @@
   }
 
   /**
+   * Lives.key
+   *
+   * (Using key) Returns true if value exists or false if value is missing.
+   *
+   * @param {object} target
+   * @param {string} key
+   * @returns {boolean}
+   */
+  lives.key = function(target, key) {
+    ow(target, 'object');
+    ow(key, 'string');
+    var path = key.split('.');
+    for (var i = 0; i < path.length; i++) {
+      if (!target || !target.hasOwnProperty(path[i])) {
+        return false;
+      }
+      target = target[path[i]];
+    }
+    return true;
+  };
+
+  /**
    * Lives.not
    *
    * Returns true if value is missing or false if value exists.
@@ -28,7 +56,8 @@
    * @returns {boolean}
    */
   lives.not = function(attempt) {
-    let value;
+    ow(attempt, 'function');
+    var value;
     try {
       value = attempt();
     } catch (err) {
@@ -47,7 +76,8 @@
    * @returns {any}
    */
   lives.get = function(attempt) {
-    let value;
+    ow(attempt, 'function');
+    var value;
     try {
       value = attempt();
     } catch (err) {
@@ -67,7 +97,8 @@
    * @returns {any}
    */
   lives.or = function(attempt, fallback) {
-    let value;
+    ow(attempt, 'function');
+    var value;
     try {
       value = attempt();
     } catch (err) {
@@ -87,7 +118,9 @@
    * @returns {boolean}
    */
   lives.is = function(attempt, type) {
-    let value;
+    ow(attempt, 'function');
+    ow(type, 'string');
+    var value;
     try {
       value = attempt();
     } catch (err) {

@@ -4,46 +4,114 @@ const exists = { a: { b: { c: 1 } } };
 const missing = { a: {} };
 const shallow = {};
 
-test('returns true if exists', () => {
-  expect(lives(() => exists.a.b.c)).toBe(true);
+describe('lives', () => {
+  test('true if exists', () => {
+    expect(lives(() => exists.a.b.c)).toBe(true);
+  });
+
+  test('true if exists w/ shallow', () => {
+    expect(lives(() => exists.a)).toBe(true);
+  });
+
+  test('false if missing', () => {
+    expect(lives(() => missing.a.b.c)).toBe(false);
+  });
+
+  test('false if missing w/ shallow', () => {
+    expect(lives(() => shallow.a)).toBe(false);
+  });
+
+  test('throw if wrong arguments', () => {
+    expect(() => {
+      lives.is('');
+    }).toThrow(TypeError);
+  });
 });
 
-test('returns false if missing', () => {
-  expect(lives(() => missing.a.b.c)).toBe(false);
+describe('lives.get', () => {
+  test('value if exists', () => {
+    expect(lives.get(() => exists.a.b.c)).toBe(1);
+  });
+
+  test('undefined if missing', () => {
+    expect(lives.get(() => missing.a.b.c)).toBe(undefined);
+  });
+
+  test('throw if wrong arguments', () => {
+    expect(() => {
+      lives.is('');
+    }).toThrow(TypeError);
+  });
 });
 
-test('returns value if exists', () => {
-  expect(lives.get(() => exists.a.b.c)).toBe(1);
+describe('lives.or', () => {
+  test('value if exists', () => {
+    expect(lives.or(() => exists.a.b.c, 2)).toBe(1);
+  });
+
+  test('fallback if missing', () => {
+    expect(lives.or(() => missing.a.b.c, 2)).toBe(2);
+  });
+
+  test('throw if wrong arguments', () => {
+    expect(() => {
+      lives.is('', '');
+    }).toThrow(TypeError);
+  });
 });
 
-test('returns undefined if missing', () => {
-  expect(lives.get(() => missing.a.b.c)).toBe(undefined);
+describe('lives.not', () => {
+  test('true if missing', () => {
+    expect(lives.not(() => missing.a.b.c)).toBe(true);
+  });
+
+  test('false if exists', () => {
+    expect(lives.not(() => exists.a.b.c)).toBe(false);
+  });
+
+  test('throw if wrong arguments', () => {
+    expect(() => {
+      lives.is('');
+    }).toThrow(TypeError);
+  });
 });
 
-test('returns false if missing in shallow object', () => {
-  expect(lives(() => shallow.a)).toBe(false);
+describe('lives.is', () => {
+  test('true if number', () => {
+    expect(lives.is(() => exists.a.b.c, 'number')).toBe(true);
+  });
+
+  test('false if not number', () => {
+    expect(lives.is(() => missing.a.b.c, 'number')).toBe(false);
+  });
+
+  test('throw if wrong arguments', () => {
+    expect(() => {
+      lives.is('', '');
+    }).toThrow(TypeError);
+  });
 });
 
-test('returns value (not fallback) if exists', () => {
-  expect(lives.or(() => exists.a.b.c, 2)).toBe(1);
-});
+describe('lives.key', () => {
+  test('true if exists', () => {
+    expect(lives.key(exists, 'a.b.c')).toBe(true);
+  });
 
-test('returns fallback if missing', () => {
-  expect(lives.or(() => missing.a.b.c, 2)).toBe(2);
-});
+  test('true if exists w/ shallow', () => {
+    expect(lives.key(exists, 'a')).toBe(true);
+  });
 
-test('returns true if missing', () => {
-  expect(lives.not(() => missing.a.b.c)).toBe(true);
-});
+  test('false if missing', () => {
+    expect(lives.key(missing, 'a.b.c')).toBe(false);
+  });
 
-test('returns false if exists', () => {
-  expect(lives.not(() => exists.a.b.c)).toBe(false);
-});
+  test('false if missing w/ shallow', () => {
+    expect(lives.key(shallow, 'a')).toBe(false);
+  });
 
-test('returns true if number', () => {
-  expect(lives.is(() => exists.a.b.c, 'number')).toBe(true);
-});
-
-test('return false if not number', () => {
-  expect(lives.is(() => missing.a.b.c, 'number')).toBe(false);
+  test('throw if wrong arguments', () => {
+    expect(() => {
+      lives.key('', '');
+    }).toThrow(TypeError);
+  });
 });
