@@ -34,10 +34,18 @@ if (lives(() => hello.a.b.c)) {
 }
 ```
 
+### Lives.key(target, key)
+
+```javascript
+if (lives.key(hello, 'a.b.c')) {
+  console.log(hello.a.b.c, 'World!'); // Hello World!
+}
+```
+
 ### Lives.not(attempt)
 
 ```javascript
-if(lives.not(() => missing.a.b.c)) {
+if (lives.not(() => missing.a.b.c)) {
   throw new Error('Variable is missing!');
 }
 ```
@@ -47,7 +55,7 @@ if(lives.not(() => missing.a.b.c)) {
 ```javascript
 console.log(lives.get(() => hello.a.b.c), 'World!'); // Hello World!
 
-lives.get(() => missing.a.b.c) // undefined
+lives.get(() => missing.a.b.c); // undefined
 ```
 
 ### Lives.or(attempt, fallback)
