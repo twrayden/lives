@@ -2,14 +2,19 @@
   "name": "lives",
   "version": "3.3.0",
   "description": "A variable lives here",
+  "author": "Thomas Rayden",
+  "license": "MIT",
   "main": "index.js",
+  "browser": "index.js",
   "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
   "scripts": {
     "test": "jest",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
-  "author": "Thomas Rayden",
-  "license": "MIT",
   "devDependencies": {
     "coveralls": "3.0.3",
     "jest": "24.7.1"
