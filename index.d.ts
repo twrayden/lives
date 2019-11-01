@@ -1,6 +1,6 @@
 declare function lives(attempt: () => any): boolean;
 
-declare namespace lives {
+declare module lives {
   function not(attempt: () => any): boolean;
   function get(attempt: () => any): any;
   function or(attempt: () => any, fallback: any): any;
