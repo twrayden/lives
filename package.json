@@ -6,17 +6,19 @@
   "license": "MIT",
   "main": "index.js",
   "browser": "index.js",
-  "types": "index.d.ts",
+  "types": "types",
   "files": [
     "index.js",
-    "index.d.ts"
+    "types/index.d.ts"
   ],
   "scripts": {
     "test": "jest",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "dtslint": "dtslint types"
   },
   "devDependencies": {
     "coveralls": "3.0.3",
+    "dtslint": "1.0.2",
     "jest": "24.7.1"
   },
   "keywords": [

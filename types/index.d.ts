@@ -1,6 +1,8 @@
+// TypeScript Version: 3.0
+
 declare function lives(attempt: () => any): boolean;
 
-declare module lives {
+declare namespace lives {
   function not(attempt: () => any): boolean;
   function get(attempt: () => any): any;
   function or(attempt: () => any, fallback: any): any;
@@ -8,4 +10,4 @@ declare module lives {
   function key(target: any, key: string): boolean;
 }
 
-export = lives;
+export default lives;

@@ -1,4 +1,4 @@
-const lives = require('./index');
+const lives = require('../index');
 
 const exists = { a: { b: { c: 1 } } };
 const missing = { a: {} };
