@@ -6,15 +6,15 @@
   "license": "MIT",
   "main": "index.js",
   "browser": "index.js",
-  "types": "types",
+  "types": "index.d.ts",
   "files": [
     "index.js",
-    "types/index.d.ts"
+    "index.d.ts"
   ],
   "scripts": {
     "test": "jest",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
-    "dtslint": "dtslint types"
+    "dtslint": "dtslint ."
   },
   "devDependencies": {
     "coveralls": "3.0.3",
