@@ -10,7 +10,7 @@ Save yourself from messy & unreliable nested object checking.
 
 - Tiny w/ zero dependencies (500B minified)
 - 100% test coverage
-- Works in Node.js and Browser environments
+- Works in Node.js and legacy browser environments
 - Includes useful helper functions for different use cases
 
 ```

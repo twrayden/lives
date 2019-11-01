@@ -23,7 +23,7 @@ describe('lives', () => {
 
   test('throw if wrong arguments', () => {
     expect(() => {
-      lives.is('');
+      lives('');
     }).toThrow(TypeError);
   });
 });
@@ -39,7 +39,7 @@ describe('lives.get', () => {
 
   test('throw if wrong arguments', () => {
     expect(() => {
-      lives.is('');
+      lives.get('');
     }).toThrow(TypeError);
   });
 });
@@ -55,8 +55,12 @@ describe('lives.or', () => {
 
   test('throw if wrong arguments', () => {
     expect(() => {
-      lives.is('', '');
+      lives.or('', '');
     }).toThrow(TypeError);
+  });
+
+  test('value is undefined', () => {
+    expect(lives.or(() => undefined, 1)).toBe(1);
   });
 });
 
@@ -71,7 +75,7 @@ describe('lives.not', () => {
 
   test('throw if wrong arguments', () => {
     expect(() => {
-      lives.is('');
+      lives.not('');
     }).toThrow(TypeError);
   });
 });

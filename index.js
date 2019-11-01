@@ -90,7 +90,7 @@
   /**
    * Lives.or
    *
-   * Returns value or fallback if value is missing.
+   * Returns value or fallback if value is missing or undefined.
    *
    * @param {function} attempt
    * @param {any} fallback
@@ -101,6 +101,9 @@
     var value;
     try {
       value = attempt();
+      if (value == null) {
+        throw new Error('Value undefined');
+      }
     } catch (err) {
       value = fallback;
     } finally {
